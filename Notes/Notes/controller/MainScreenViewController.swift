@@ -39,24 +39,30 @@ class MainScreenViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetchNotes()
-        tableView.reloadData()
+        fetchNotesFromCoreData()
     }
-    
-    func fetchNotes() {
+
+    func fetchNotesFromCoreData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.Note.name)
         
-        do {
-            notes = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+        fetchRequest.returnsObjectsAsFaults = false
+
+        CoreDataManager.shared.enqueue { _ in
+            do {
+                self.notes = try (managedContext.fetch(fetchRequest) as? [Note] ?? [])
+                DispatchQueue.main.async { [weak self] in
+                    self?.tableView.reloadData()
+                }
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
         }
     }
-    
+
     func setupBackground() {
         let backgroundImage: UIImage = #imageLiteral(resourceName: "paperBackground")
         let imageView = UIImageView(image: backgroundImage)
