@@ -96,8 +96,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzF-8v-cvm">
+                                <rect key="frame" x="16" y="60" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pVf-f4-I0c">
+                                <rect key="frame" x="16" y="97" width="343" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zzY-8o-PLf">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="16" y="163" width="343" height="488"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -107,10 +118,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="zzY-8o-PLf" firstAttribute="top" secondItem="zJW-7x-6OJ" secondAttribute="top" id="1Qv-Yt-MtG"/>
-                            <constraint firstItem="zJW-7x-6OJ" firstAttribute="trailing" secondItem="zzY-8o-PLf" secondAttribute="trailing" id="EZz-p0-ms2"/>
-                            <constraint firstItem="zzY-8o-PLf" firstAttribute="leading" secondItem="zJW-7x-6OJ" secondAttribute="leading" id="Upb-OG-su7"/>
-                            <constraint firstItem="zJW-7x-6OJ" firstAttribute="bottom" secondItem="zzY-8o-PLf" secondAttribute="bottom" id="mxR-5X-fRQ"/>
+                            <constraint firstItem="zJW-7x-6OJ" firstAttribute="trailing" secondItem="zzY-8o-PLf" secondAttribute="trailing" constant="16" id="EZz-p0-ms2"/>
+                            <constraint firstItem="zJW-7x-6OJ" firstAttribute="trailing" secondItem="pVf-f4-I0c" secondAttribute="trailing" constant="16" id="LhS-kx-FpY"/>
+                            <constraint firstItem="pVf-f4-I0c" firstAttribute="leading" secondItem="zJW-7x-6OJ" secondAttribute="leading" constant="16" id="MLP-yR-XFd"/>
+                            <constraint firstItem="bzF-8v-cvm" firstAttribute="top" secondItem="zJW-7x-6OJ" secondAttribute="top" constant="16" id="MRn-ad-riS"/>
+                            <constraint firstItem="zzY-8o-PLf" firstAttribute="leading" secondItem="zJW-7x-6OJ" secondAttribute="leading" constant="16" id="Upb-OG-su7"/>
+                            <constraint firstItem="bzF-8v-cvm" firstAttribute="leading" secondItem="zJW-7x-6OJ" secondAttribute="leading" constant="16" id="aod-DE-SGs"/>
+                            <constraint firstItem="zzY-8o-PLf" firstAttribute="top" secondItem="pVf-f4-I0c" secondAttribute="bottom" constant="32" id="ea7-yP-HYP"/>
+                            <constraint firstItem="zJW-7x-6OJ" firstAttribute="trailing" secondItem="bzF-8v-cvm" secondAttribute="trailing" constant="16" id="lfS-7R-bAI"/>
+                            <constraint firstItem="pVf-f4-I0c" firstAttribute="top" secondItem="bzF-8v-cvm" secondAttribute="bottom" constant="16" id="m6E-Vy-gHZ"/>
+                            <constraint firstItem="zJW-7x-6OJ" firstAttribute="bottom" secondItem="zzY-8o-PLf" secondAttribute="bottom" constant="16" id="mxR-5X-fRQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zJW-7x-6OJ"/>
                     </view>
