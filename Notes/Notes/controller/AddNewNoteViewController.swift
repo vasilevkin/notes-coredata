@@ -37,25 +37,47 @@ class AddNewNoteViewController: UIViewController {
     
     private func saveNote() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-            let entity = NSEntityDescription.entity(forEntityName: Constants.Note.name, in: appDelegate.persistentContainer.viewContext),
             let title = titleTextField.text,
-            let text = textTextView.text else {
+            let text = textTextView.text,
+            titleTextField.text != "" else {
                 return
         }
         
-        let note = NSManagedObject(entity: entity, insertInto: appDelegate.persistentContainer.viewContext)
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: Constants.Note.name, in: context)
+
+        CoreDataManager.shared.enqueue { [weak self] context in
+            do {
+                self?.setNoteDataValues(for: entity, context: context, title: title, text: text)
+                try context.save()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        }
+    }
+    
+    func setNoteDataValues(for entity: NSEntityDescription?, context: NSManagedObjectContext?, title: String?, text: String?) {
+        guard let entity = entity,
+            let context = context,
+            let title = title else {
+                return
+        }
+        
+        let date = Date.timeIntervalSinceReferenceDate
+        let note = NSManagedObject(entity: entity, insertInto: context)
         
         note.setValue(title, forKeyPath: Constants.Note.title)
         note.setValue(text, forKeyPath: Constants.Note.text)
         
-        do {
-            try appDelegate.persistentContainer.viewContext.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
+        let updateDate = Date(timeIntervalSinceReferenceDate: date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.long
+        dateFormatter.timeZone = .current
+        let timestamp = dateFormatter.string(from: updateDate)
+        
+        note.setValue(timestamp, forKey: Constants.Note.timestamp)
     }
-    
-    
+
     
     /*
      // MARK: - Navigation
