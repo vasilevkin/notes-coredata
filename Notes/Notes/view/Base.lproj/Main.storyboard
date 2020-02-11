@@ -77,12 +77,48 @@
                                 <segue destination="Bhk-bm-YAd" kind="show" id="dtx-BG-8bI"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add new note" image="plus" catalog="system" id="raQ-ru-x6O"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add new note" image="plus" catalog="system" id="raQ-ru-x6O">
+                            <connections>
+                                <segue destination="rP7-te-Npe" kind="show" id="9Qx-7D-aVp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LQS-HT-0JD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1973.913043478261" y="108.48214285714285"/>
+        </scene>
+        <!--Add a new note-->
+        <scene sceneID="jvd-pm-v0B">
+            <objects>
+                <viewController id="rP7-te-Npe" customClass="AddNewNoteViewController" customModule="Great_Notes" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5ak-Jf-QvL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zzY-8o-PLf">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="zzY-8o-PLf" firstAttribute="top" secondItem="zJW-7x-6OJ" secondAttribute="top" id="1Qv-Yt-MtG"/>
+                            <constraint firstItem="zJW-7x-6OJ" firstAttribute="trailing" secondItem="zzY-8o-PLf" secondAttribute="trailing" id="EZz-p0-ms2"/>
+                            <constraint firstItem="zzY-8o-PLf" firstAttribute="leading" secondItem="zJW-7x-6OJ" secondAttribute="leading" id="Upb-OG-su7"/>
+                            <constraint firstItem="zJW-7x-6OJ" firstAttribute="bottom" secondItem="zzY-8o-PLf" secondAttribute="bottom" id="mxR-5X-fRQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zJW-7x-6OJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add a new note" id="VEC-BU-a6C"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nGZ-Ba-ZVu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1974" y="857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xUr-ab-KT0">
