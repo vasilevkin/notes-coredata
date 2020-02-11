@@ -67,7 +67,22 @@ class MainScreenViewController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension MainScreenViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil),
+            let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as? UIViewController,
+            let detailsViewController = viewController as? AddNewNoteViewController else {
+                return
+        }
+        
+        let note = notes[indexPath.row]
+        let objectId = note.objectID.uriRepresentation().absoluteString
+        
+        print("objectId = \(objectId)")
+        
+        detailsViewController.note = note
+        
+        self.present(detailsViewController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - UITableViewDataSource

@@ -13,10 +13,19 @@ class AddNewNoteViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textTextView: UITextView!
     
+    var note: NSManagedObject?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        print("noteId = \(note)")
+        
+        guard let note = note else {
+            return
+        }
+        
+        titleTextField.text = note.value(forKeyPath: Constants.Note.title) as? String
+        textTextView.text = note.value(forKeyPath: Constants.Note.text) as? String
     }
     
     override func viewWillDisappear(_ animated: Bool) {
