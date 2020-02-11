@@ -7,15 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class MainScreenViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    struct Constants {
-        static let noteCellReuseIdentifier = "NoteCell"
-    }
-    
-    var notes : [String] = []
+    private var notes : [NSManagedObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +21,7 @@ class MainScreenViewController: UIViewController {
         tableView.dataSource = self
         
         self.tableView.register(NoteTableViewCell.self, forCellReuseIdentifier: Constants.noteCellReuseIdentifier)
-        
-        
-        
-        notes = ["one", "two"]
-        
-        
     }
-    
     
     /*
      // MARK: - Navigation
@@ -43,6 +33,27 @@ class MainScreenViewController: UIViewController {
      }
      */
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchNotes()
+        tableView.reloadData()
+    }
+    
+    func fetchNotes() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.Note.name)
+        
+        do {
+            notes = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -62,7 +73,10 @@ extension MainScreenViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.noteCellReuseIdentifier, for: indexPath) as! NoteTableViewCell
         
-        cell.textLabel?.text = notes[indexPath.row]
+        let note = notes[indexPath.row]
+        
+        cell.textLabel?.text = note.value(forKeyPath: Constants.Note.title) as? String
+//        cell.textLabel?.text = notes[indexPath.row]
         
         return cell
     }

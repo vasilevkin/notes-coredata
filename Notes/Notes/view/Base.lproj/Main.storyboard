@@ -76,7 +76,11 @@
                                 <segue destination="Bhk-bm-YAd" kind="show" id="hrG-yj-zlR"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3ac-h9-RdB"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3ac-h9-RdB">
+                            <connections>
+                                <segue destination="rP7-te-Npe" kind="show" id="99u-7m-gd5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="aql-Qb-BQ8" id="lk6-OH-kPo"/>
@@ -95,18 +99,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzF-8v-cvm">
-                                <rect key="frame" x="16" y="16" width="343" height="21"/>
+                                <rect key="frame" x="16" y="60" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pVf-f4-I0c">
-                                <rect key="frame" x="16" y="53" width="343" height="34"/>
+                                <rect key="frame" x="16" y="97" width="343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zzY-8o-PLf">
-                                <rect key="frame" x="16" y="119" width="343" height="532"/>
+                                <rect key="frame" x="16" y="163" width="343" height="488"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -130,6 +134,10 @@
                         <viewLayoutGuide key="safeArea" id="zJW-7x-6OJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add a new note" id="VEC-BU-a6C"/>
+                    <connections>
+                        <outlet property="textTextView" destination="zzY-8o-PLf" id="rY7-sA-4eX"/>
+                        <outlet property="titleTextField" destination="pVf-f4-I0c" id="yHp-Ao-1YP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGZ-Ba-ZVu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
