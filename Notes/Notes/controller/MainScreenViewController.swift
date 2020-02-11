@@ -21,6 +21,8 @@ class MainScreenViewController: UIViewController {
         tableView.dataSource = self
         
         self.tableView.register(NoteTableViewCell.self, forCellReuseIdentifier: Constants.noteCellReuseIdentifier)
+        
+        setupBackground()
     }
     
     /*
@@ -54,6 +56,12 @@ class MainScreenViewController: UIViewController {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
+    
+    func setupBackground() {
+        let backgroundImage: UIImage = #imageLiteral(resourceName: "paperBackground")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -76,6 +84,7 @@ extension MainScreenViewController: UITableViewDataSource {
         let note = notes[indexPath.row]
         
         cell.textLabel?.text = note.value(forKeyPath: Constants.Note.title) as? String
+        cell.backgroundColor = .clear
 //        cell.textLabel?.text = notes[indexPath.row]
         
         return cell
