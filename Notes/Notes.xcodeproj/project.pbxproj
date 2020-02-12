@@ -76,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8628C6D223F427AC002FADAE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				86F9892A23F40090000885C8 /* CoreDataManager+Tests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		86B5E74623F27F1F0056B23C = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +109,7 @@
 				86B5E76923F28D720056B23C /* model */,
 				86B5E76A23F28D7B0056B23C /* view */,
 				86B5E76B23F28D980056B23C /* controller */,
+				8628C6D223F427AC002FADAE /* Extensions */,
 				86FA11CF23F4129A00B0AD34 /* Supporting Files */,
 			);
 			path = Notes;
@@ -112,7 +121,6 @@
 				86B5E75B23F27F1F0056B23C /* Notes.xcdatamodeld */,
 				8689E11023F2B3FF00AB2F8C /* Constants.swift */,
 				8628C6D023F3194B002FADAE /* CoreDataManager.swift */,
-				86F9892A23F40090000885C8 /* CoreDataManager+Tests.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
