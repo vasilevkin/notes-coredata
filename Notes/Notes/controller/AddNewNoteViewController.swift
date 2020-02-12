@@ -15,6 +15,11 @@ class AddNewNoteViewController: UIViewController {
     
     var note: NSManagedObject?
     
+    private struct EditingNoteData {
+        static var newTitle = String()
+        static var newText = String()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,13 +31,32 @@ class AddNewNoteViewController: UIViewController {
         
         titleTextField.text = note.value(forKeyPath: Constants.Note.title) as? String
         textTextView.text = note.value(forKeyPath: Constants.Note.text) as? String
+        
+        setEditingNoteData(for: note)
+        setDelegates()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         guard !(titleTextField.text?.isEmpty ?? false) else {
             return
         }
-        saveNote()
+        saveNoteIfNeeded()
+    }
+    
+    private func setDelegates() {
+        titleTextField.delegate = self
+        textTextView.delegate = self
+    }
+    
+    private func setEditingNoteData(for note: NSManagedObject) {
+        EditingNoteData.newTitle = note.value(forKeyPath: Constants.Note.title) as? String ?? ""
+        EditingNoteData.newText = note.value(forKeyPath: Constants.Note.text) as? String ?? ""
+    }
+
+    private func saveNoteIfNeeded() {
+        if EditingNoteData.newTitle != titleTextField.text || EditingNoteData.newText != textTextView.text {
+            saveNote()
+        }
     }
     
     private func saveNote() {
@@ -44,8 +68,14 @@ class AddNewNoteViewController: UIViewController {
         }
         
         let context = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: Constants.Note.name, in: context)
-
+        
+        var entity: NSEntityDescription?
+        if let note = note {
+            entity = note.entity
+        } else {
+            entity = NSEntityDescription.entity(forEntityName: Constants.Note.name, in: context)
+        }
+        
         CoreDataManager.shared.enqueue { [weak self] context in
             do {
                 self?.setNoteDataValues(for: entity, context: context, title: title, text: text)
@@ -77,16 +107,29 @@ class AddNewNoteViewController: UIViewController {
         
         note.setValue(timestamp, forKey: Constants.Note.timestamp)
     }
+}
 
+// MARK: - UITextViewDelegate
+
+extension AddNewNoteViewController: UITextViewDelegate {
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func textViewDidChange(_ textView: UITextView) {
+        guard let text = textTextView.text else {
+            return
+        }
+        EditingNoteData.newText = text
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension AddNewNoteViewController: UITextFieldDelegate {
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let title = titleTextField.text else {
+            return false
+        }
+        EditingNoteData.newTitle = title
+        return true
+    }
 }
