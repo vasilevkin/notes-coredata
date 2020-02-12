@@ -10,6 +10,7 @@ import Foundation
 
 struct Constants {
     static let noteCellReuseIdentifier = "NoteCell"
+    static let noteCellNibName = "NoteTableViewCell"
     
     // CoreData entity Note
     struct Note {
