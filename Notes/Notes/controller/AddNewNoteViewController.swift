@@ -1,5 +1,5 @@
 //
-//  AddNewNoteViewController.swift
+//  NoteDetailsViewController.swift
 //  Notes
 //
 //  Created by Sergey Vasilevkin on 11/02/2020.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AddNewNoteViewController: UIViewController {
+class NoteDetailsViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textTextView: UITextView!
     
@@ -111,7 +111,7 @@ class AddNewNoteViewController: UIViewController {
 
 // MARK: - UITextViewDelegate
 
-extension AddNewNoteViewController: UITextViewDelegate {
+extension NoteDetailsViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         guard let text = textTextView.text else {
@@ -123,7 +123,7 @@ extension AddNewNoteViewController: UITextViewDelegate {
 
 // MARK: - UITableViewDataSource
 
-extension AddNewNoteViewController: UITextFieldDelegate {
+extension NoteDetailsViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let title = titleTextField.text else {

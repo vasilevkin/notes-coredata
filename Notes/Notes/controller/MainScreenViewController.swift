@@ -83,7 +83,7 @@ extension MainScreenViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil),
             let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as? UIViewController,
-            let detailsViewController = viewController as? AddNewNoteViewController else {
+            let detailsViewController = viewController as? NoteDetailsViewController else {
                 return
         }
         
