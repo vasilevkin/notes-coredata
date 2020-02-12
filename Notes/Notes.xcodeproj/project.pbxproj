@@ -20,7 +20,18 @@
 		86B5E77223F29CA90056B23C /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5E77023F29CA90056B23C /* NoteTableViewCell.swift */; };
 		86B5E77323F29CA90056B23C /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86B5E77123F29CA90056B23C /* NoteTableViewCell.xib */; };
 		86B5E77523F2A0210056B23C /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5E77423F2A0210056B23C /* MainScreenViewController.swift */; };
+		86F9892323F3FFD2000885C8 /* GreatNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9892223F3FFD2000885C8 /* GreatNotesTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		86F9892523F3FFD2000885C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86B5E74723F27F1F0056B23C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 86B5E74E23F27F1F0056B23C;
+			remoteInfo = Notes;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8628C6D023F3194B002FADAE /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -38,10 +49,20 @@
 		86B5E77023F29CA90056B23C /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		86B5E77123F29CA90056B23C /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
 		86B5E77423F2A0210056B23C /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		86F9892023F3FFD1000885C8 /* GreatNotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GreatNotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		86F9892223F3FFD2000885C8 /* GreatNotesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreatNotesTests.swift; sourceTree = "<group>"; };
+		86F9892423F3FFD2000885C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		86B5E74C23F27F1F0056B23C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86F9891D23F3FFD1000885C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -55,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				86B5E75123F27F1F0056B23C /* Notes */,
+				86F9892123F3FFD2000885C8 /* GreatNotesTests */,
 				86B5E75023F27F1F0056B23C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				86B5E74F23F27F1F0056B23C /* Great Notes.app */,
+				86F9892023F3FFD1000885C8 /* GreatNotesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,6 +135,15 @@
 			path = controller;
 			sourceTree = "<group>";
 		};
+		86F9892123F3FFD2000885C8 /* GreatNotesTests */ = {
+			isa = PBXGroup;
+			children = (
+				86F9892223F3FFD2000885C8 /* GreatNotesTests.swift */,
+				86F9892423F3FFD2000885C8 /* Info.plist */,
+			);
+			path = GreatNotesTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,6 +164,24 @@
 			productReference = 86B5E74F23F27F1F0056B23C /* Great Notes.app */;
 			productType = "com.apple.product-type.application";
 		};
+		86F9891F23F3FFD1000885C8 /* GreatNotesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 86F9892923F3FFD2000885C8 /* Build configuration list for PBXNativeTarget "GreatNotesTests" */;
+			buildPhases = (
+				86F9891C23F3FFD1000885C8 /* Sources */,
+				86F9891D23F3FFD1000885C8 /* Frameworks */,
+				86F9891E23F3FFD1000885C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				86F9892623F3FFD2000885C8 /* PBXTargetDependency */,
+			);
+			name = GreatNotesTests;
+			productName = GreatNotesTests;
+			productReference = 86F9892023F3FFD1000885C8 /* GreatNotesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -144,6 +194,10 @@
 				TargetAttributes = {
 					86B5E74E23F27F1F0056B23C = {
 						CreatedOnToolsVersion = 11.3;
+					};
+					86F9891F23F3FFD1000885C8 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 86B5E74E23F27F1F0056B23C;
 					};
 				};
 			};
@@ -161,6 +215,7 @@
 			projectRoot = "";
 			targets = (
 				86B5E74E23F27F1F0056B23C /* Notes */,
+				86F9891F23F3FFD1000885C8 /* GreatNotesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -174,6 +229,13 @@
 				86B5E75F23F27F200056B23C /* Assets.xcassets in Resources */,
 				86B5E75A23F27F1F0056B23C /* Main.storyboard in Resources */,
 				86B5E77323F29CA90056B23C /* NoteTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86F9891E23F3FFD1000885C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,7 +258,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		86F9891C23F3FFD1000885C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86F9892323F3FFD2000885C8 /* GreatNotesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		86F9892623F3FFD2000885C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 86B5E74E23F27F1F0056B23C /* Notes */;
+			targetProxy = 86F9892523F3FFD2000885C8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		86B5E75823F27F1F0056B23C /* Main.storyboard */ = {
@@ -368,6 +446,46 @@
 			};
 			name = Release;
 		};
+		86F9892723F3FFD2000885C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AJDCR3X249;
+				INFOPLIST_FILE = GreatNotesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vasilevkin.notes.GreatNotesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Great Notes.app/Great Notes";
+			};
+			name = Debug;
+		};
+		86F9892823F3FFD2000885C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AJDCR3X249;
+				INFOPLIST_FILE = GreatNotesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vasilevkin.notes.GreatNotesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Great Notes.app/Great Notes";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -385,6 +503,15 @@
 			buildConfigurations = (
 				86B5E76723F27F200056B23C /* Debug */,
 				86B5E76823F27F200056B23C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		86F9892923F3FFD2000885C8 /* Build configuration list for PBXNativeTarget "GreatNotesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86F9892723F3FFD2000885C8 /* Debug */,
+				86F9892823F3FFD2000885C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
