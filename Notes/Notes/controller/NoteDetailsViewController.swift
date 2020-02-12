@@ -20,6 +20,8 @@ class NoteDetailsViewController: UIViewController {
         static var newText = String()
     }
     
+    // MARK: ViewController lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +45,8 @@ class NoteDetailsViewController: UIViewController {
         saveNoteIfNeeded()
     }
     
+    // MARK: Initial setup
+    
     private func setDelegates() {
         titleTextField.delegate = self
         textTextView.delegate = self
@@ -52,7 +56,9 @@ class NoteDetailsViewController: UIViewController {
         EditingNoteData.newTitle = note.value(forKeyPath: Constants.Note.title) as? String ?? ""
         EditingNoteData.newText = note.value(forKeyPath: Constants.Note.text) as? String ?? ""
     }
-
+    
+    // MARK: Private
+    
     private func saveNoteIfNeeded() {
         if EditingNoteData.newTitle != titleTextField.text || EditingNoteData.newText != textTextView.text {
             saveNote()
@@ -86,7 +92,7 @@ class NoteDetailsViewController: UIViewController {
         }
     }
     
-    func setNoteDataValues(for entity: NSEntityDescription?, context: NSManagedObjectContext?, title: String?, text: String?) {
+    private func setNoteDataValues(for entity: NSEntityDescription?, context: NSManagedObjectContext?, title: String?, text: String?) {
         guard let entity = entity,
             let context = context,
             let title = title else {

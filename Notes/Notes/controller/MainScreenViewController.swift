@@ -14,18 +14,14 @@ class MainScreenViewController: UIViewController {
     
     private var notes : [NSManagedObject] = []
     
+    // MARK: ViewController lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        self.tableView.register(NoteTableViewCell.self, forCellReuseIdentifier: Constants.noteCellReuseIdentifier)
-        
+        setupTableView()
         setupBackground()
-        
         updateImageForCurrentTraitCollection()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +29,24 @@ class MainScreenViewController: UIViewController {
         
         fetchNotesFromCoreData()
     }
-
+    
+    // MARK: Initial setup
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.register(UINib(nibName: Constants.noteCellNibName, bundle: nil), forCellReuseIdentifier: Constants.noteCellReuseIdentifier)
+    }
+    
+    private func setupBackground() {
+        let backgroundImage: UIImage = #imageLiteral(resourceName: "paperBackground")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+    }
+    
+    // MARK: Private
+    
     private func fetchNotesFromCoreData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -42,7 +55,7 @@ class MainScreenViewController: UIViewController {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.Note.name)
         
         fetchRequest.returnsObjectsAsFaults = false
-
+        
         CoreDataManager.shared.enqueue { _ in
             do {
                 self.notes = try (managedContext.fetch(fetchRequest) as? [Note] ?? [])
@@ -53,12 +66,6 @@ class MainScreenViewController: UIViewController {
                 print("Could not fetch. \(error), \(error.userInfo)")
             }
         }
-    }
-
-    private func setupBackground() {
-        let backgroundImage: UIImage = #imageLiteral(resourceName: "paperBackground")
-        let imageView = UIImageView(image: backgroundImage)
-        self.tableView.backgroundView = imageView
     }
     
     // MARK: - Dark Mode Support
@@ -111,9 +118,11 @@ extension MainScreenViewController: UITableViewDataSource {
         
         let note = notes[indexPath.row]
         
-        cell.textLabel?.text = note.value(forKeyPath: Constants.Note.title) as? String
+        cell.titleLabel?.text = note.value(forKeyPath: Constants.Note.title) as? String
+        cell.subtitleLabel?.text = note.value(forKeyPath: Constants.Note.timestamp) as? String
+        
         cell.backgroundColor = .clear
-//        cell.textLabel?.text = notes[indexPath.row]
+        //        cell.textLabel?.text = notes[indexPath.row]
         
         return cell
     }
