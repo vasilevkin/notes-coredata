@@ -12,8 +12,8 @@ import CoreData
 class MainScreenViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    private var notes : [NSManagedObject] = []
-    
+    private var notes : [Note] = []
+
     // MARK: ViewController lifecycle
     
     override func viewDidLoad() {
@@ -115,14 +115,8 @@ extension MainScreenViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.noteCellReuseIdentifier, for: indexPath) as! NoteTableViewCell
-        
-        let note = notes[indexPath.row]
-        
-        cell.titleLabel?.text = note.value(forKeyPath: Constants.Note.title) as? String
-        cell.subtitleLabel?.text = note.value(forKeyPath: Constants.Note.timestamp) as? String
-        
-        cell.backgroundColor = .clear
-        //        cell.textLabel?.text = notes[indexPath.row]
+                
+        cell.setNoteData(for: notes[indexPath.row])
         
         return cell
     }

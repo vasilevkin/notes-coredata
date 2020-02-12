@@ -12,15 +12,12 @@ class NoteTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    // MARK: Initial setup
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    func setNoteData(for note: Note) {
+        self.backgroundColor = .clear
 
-        // Configure the view for the selected state
+        titleLabel?.text = note.value(forKeyPath: Constants.Note.title) as? String
+        subtitleLabel?.text = note.value(forKeyPath: Constants.Note.timestamp) as? String
     }
-    
 }
