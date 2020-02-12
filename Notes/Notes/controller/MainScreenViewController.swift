@@ -120,4 +120,20 @@ extension MainScreenViewController: UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            
+            notes.remove(at: indexPath.row)
+            tableView.reloadData()
+            print("swipe to delete")
+            
+            // handle delete (by removing the data from your array and updating the tableview)
+
+        }
+    }
 }
