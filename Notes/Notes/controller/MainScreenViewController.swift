@@ -23,18 +23,10 @@ class MainScreenViewController: UIViewController {
         self.tableView.register(NoteTableViewCell.self, forCellReuseIdentifier: Constants.noteCellReuseIdentifier)
         
         setupBackground()
+        
+        updateImageForCurrentTraitCollection()
+
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,7 +34,7 @@ class MainScreenViewController: UIViewController {
         fetchNotesFromCoreData()
     }
 
-    func fetchNotesFromCoreData() {
+    private func fetchNotesFromCoreData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -63,10 +55,25 @@ class MainScreenViewController: UIViewController {
         }
     }
 
-    func setupBackground() {
+    private func setupBackground() {
         let backgroundImage: UIImage = #imageLiteral(resourceName: "paperBackground")
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
+    }
+    
+    // MARK: - Dark Mode Support
+    
+    private func updateImageForCurrentTraitCollection() {
+        if traitCollection.userInterfaceStyle == .dark {
+            self.tableView.backgroundView = nil
+        } else {
+            self.tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "paperBackground"))
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateImageForCurrentTraitCollection()
     }
 }
 
