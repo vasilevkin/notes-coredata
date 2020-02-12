@@ -25,7 +25,7 @@ class NoteDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("noteId = \(note)")
+        print("noteId = \(String(describing: note))")
         
         guard let note = note else {
             return

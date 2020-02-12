@@ -13,7 +13,7 @@ import CoreData
 class CoreDataManager {
     static let shared = CoreDataManager()
     
-    private var context: NSManagedObjectContext
+    private var context: NSManagedObjectContext?
     private var container: NSPersistentCloudKitContainer
     
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -21,9 +21,9 @@ class CoreDataManager {
     
     private init() {
         self.container = appDelegate?.persistentContainer ?? NSPersistentCloudKitContainer()
-        self.context = appDelegate?.persistentContainer.viewContext ?? NSManagedObjectContext()
+        self.context = appDelegate?.persistentContainer.viewContext
         persistentContainerQueue.maxConcurrentOperationCount = 1
-        context.automaticallyMergesChangesFromParent = true
+        context?.automaticallyMergesChangesFromParent = true
     }
     
     func enqueue(block: @escaping (_ context: NSManagedObjectContext) -> Void) {
