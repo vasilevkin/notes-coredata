@@ -11,6 +11,8 @@ import Foundation
 struct Constants {
     static let noteCellReuseIdentifier = "NoteCell"
     static let noteCellNibName = "NoteTableViewCell"
+
+    static let noteDetailsViewControllerTitle = "Edit note"
     
     // CoreData entity Note
     struct Note {

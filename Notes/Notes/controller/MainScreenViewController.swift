@@ -100,8 +100,8 @@ extension MainScreenViewController: UITableViewDelegate {
         print("objectId = \(objectId)")
         
         detailsViewController.note = note
-        
-        self.present(detailsViewController, animated: true, completion: nil)
+
+        navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }
 

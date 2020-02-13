@@ -13,7 +13,7 @@ class NoteDetailsViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textTextView: UITextView!
     
-    var note: NSManagedObject?
+    var note: Note?
     
     private struct EditingNoteData {
         static var newTitle = String()
@@ -31,9 +31,7 @@ class NoteDetailsViewController: UIViewController {
             return
         }
         
-        titleTextField.text = note.value(forKeyPath: Constants.Note.title) as? String
-        textTextView.text = note.value(forKeyPath: Constants.Note.text) as? String
-        
+        setupView(for: note)
         setEditingNoteData(for: note)
         setDelegates()
     }
@@ -47,12 +45,18 @@ class NoteDetailsViewController: UIViewController {
     
     // MARK: Initial setup
     
+    private func setupView(for note: Note) {
+        title = Constants.noteDetailsViewControllerTitle
+        titleTextField.text = note.value(forKeyPath: Constants.Note.title) as? String
+        textTextView.text = note.value(forKeyPath: Constants.Note.text) as? String
+    }
+    
     private func setDelegates() {
         titleTextField.delegate = self
         textTextView.delegate = self
     }
     
-    private func setEditingNoteData(for note: NSManagedObject) {
+    private func setEditingNoteData(for note: Note) {
         EditingNoteData.newTitle = note.value(forKeyPath: Constants.Note.title) as? String ?? ""
         EditingNoteData.newText = note.value(forKeyPath: Constants.Note.text) as? String ?? ""
     }
