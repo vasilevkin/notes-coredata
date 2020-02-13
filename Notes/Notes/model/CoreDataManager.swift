@@ -59,4 +59,22 @@ class CoreDataManager {
     func updateNote(_ note: Note) {
         
     }
+
+    func fetchAllNotesFromCoreData() -> [Note] {
+        var notes: [Note] = []
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return []
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.Note.name)
+        fetchRequest.returnsObjectsAsFaults = false
+
+        do {
+            notes = try (managedContext.fetch(fetchRequest) as? [Note] ?? [])
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }        
+        return notes
+    }
 }
