@@ -99,6 +99,39 @@
             </objects>
             <point key="canvasLocation" x="1973.913043478261" y="96.428571428571431"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="UK8-Wk-hGk">
+            <objects>
+                <viewController id="pff-b7-O49" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mh4-Js-aDU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzt-nh-qcW">
+                                <rect key="frame" x="8" y="387" width="398" height="122"/>
+                                <string key="text">Sign In 
+with your AppleID 
+to use iCloud and share notes between all your devices 
+or tap skip 
+to use local note storage only.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="nzt-nh-qcW" firstAttribute="leading" secondItem="Zqq-bz-xny" secondAttribute="leading" constant="8" id="4t8-v8-eHx"/>
+                            <constraint firstItem="nzt-nh-qcW" firstAttribute="centerY" secondItem="mh4-Js-aDU" secondAttribute="centerY" id="chF-5t-Gkz"/>
+                            <constraint firstItem="Zqq-bz-xny" firstAttribute="trailing" secondItem="nzt-nh-qcW" secondAttribute="trailing" constant="8" id="p1k-ac-g82"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zqq-bz-xny"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="le8-aB-qbt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3028.985507246377" y="96.428571428571431"/>
+        </scene>
         <!--Add a new note-->
         <scene sceneID="jvd-pm-v0B">
             <objects>
