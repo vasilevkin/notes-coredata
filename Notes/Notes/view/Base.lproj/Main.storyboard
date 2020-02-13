@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kkp-R5-0XG">
-    <device id="ipad9_7" orientation="landscape" layout="fullscreen" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="Bhk-bm-YAd" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L1z-vZ-9gw">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4nH-3T-TTK">
-                                <rect key="frame" x="399.5" y="252.5" width="225" height="263"/>
+                                <rect key="frame" x="94.666666666666686" y="316.66666666666669" width="225" height="263.00000000000006"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Great Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0Q-Jb-a2w">
                                         <rect key="frame" x="0.0" y="0.0" width="225" height="30"/>
@@ -31,7 +31,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© Sergei Vasilevkin, 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8F-Xd-EEx">
-                                <rect key="frame" x="413.5" y="747.5" width="197" height="20.5"/>
+                                <rect key="frame" x="108.66666666666669" y="841.66666666666663" width="196.66666666666663" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -58,11 +58,11 @@
             <objects>
                 <viewController id="986-Zz-jbX" customClass="MainScreenViewController" customModule="Great_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q3g-pS-HtM">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aql-Qb-BQ8">
-                                <rect key="frame" x="200" y="50" width="624" height="718"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
@@ -75,7 +75,7 @@
                             <constraint firstItem="17O-wt-wT1" firstAttribute="trailing" secondItem="aql-Qb-BQ8" secondAttribute="trailing" id="WcF-N5-tsY">
                                 <variation key="widthClass=regular" constant="200"/>
                             </constraint>
-                            <constraint firstItem="17O-wt-wT1" firstAttribute="bottom" secondItem="aql-Qb-BQ8" secondAttribute="bottom" id="xw1-tk-m0A"/>
+                            <constraint firstAttribute="bottom" secondItem="aql-Qb-BQ8" secondAttribute="bottom" id="xw1-tk-m0A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="17O-wt-wT1"/>
                     </view>
@@ -97,29 +97,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLk-pv-zrz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1974" y="97"/>
+            <point key="canvasLocation" x="1973.913043478261" y="96.428571428571431"/>
         </scene>
         <!--Add a new note-->
         <scene sceneID="jvd-pm-v0B">
             <objects>
                 <viewController storyboardIdentifier="DetailsViewController" id="rP7-te-Npe" customClass="NoteDetailsViewController" customModule="Great_Notes" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5ak-Jf-QvL">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzF-8v-cvm">
-                                <rect key="frame" x="200" y="66" width="624" height="21"/>
+                                <rect key="frame" x="16" y="104" width="382" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Note title is required..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pVf-f4-I0c">
-                                <rect key="frame" x="200" y="103" width="624" height="34"/>
+                                <rect key="frame" x="16" y="141" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zzY-8o-PLf">
-                                <rect key="frame" x="200" y="169" width="624" height="583"/>
+                                <rect key="frame" x="16" y="207" width="382" height="639"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -165,7 +165,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kkp-R5-0XG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lLU-N1-xsk">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
