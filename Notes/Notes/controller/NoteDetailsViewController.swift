@@ -78,21 +78,13 @@ class NoteDetailsViewController: UIViewController {
         }
         
         let context = appDelegate.persistentContainer.viewContext
-        
-        var entity: NSEntityDescription?
         if let note = note {
-            entity = note.entity
-        } else {
-            entity = NSEntityDescription.entity(forEntityName: Constants.Note.name, in: context)
+            context.delete(note)
         }
+        let entity = NSEntityDescription.entity(forEntityName: Constants.Note.name, in: context)
         
         CoreDataManager.shared.enqueue { [weak self] context in
-            do {
-                self?.setNoteDataValues(for: entity, context: context, title: title, text: text)
-                try context.save()
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-            }
+            self?.setNoteDataValues(for: entity, context: context, title: title, text: text)
         }
     }
     
