@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kkp-R5-0XG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3nr-Zv-Vq3">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -31,7 +31,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© Sergei Vasilevkin, 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8F-Xd-EEx">
-                                <rect key="frame" x="108.66666666666669" y="841.66666666666663" width="196.66666666666663" height="20.333333333333371"/>
+                                <rect key="frame" x="108.66666666666667" y="841.66666666666663" width="196.66666666666663" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -87,7 +87,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3ac-h9-RdB">
                             <connections>
-                                <segue destination="rP7-te-Npe" kind="show" id="99u-7m-gd5"/>
+                                <segue destination="rP7-te-Npe" kind="show" id="AlS-nq-uJg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -192,6 +192,19 @@ to use local note storage only.</string>
             </objects>
             <point key="canvasLocation" x="1974" y="857"/>
         </scene>
+        <!--Split View Controller-->
+        <scene sceneID="jiJ-N4-cqc">
+            <objects>
+                <splitViewController id="3nr-Zv-Vq3" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="kkp-R5-0XG" kind="relationship" relationship="masterViewController" id="1nf-2n-qWu"/>
+                        <segue destination="rP7-te-Npe" kind="relationship" relationship="detailViewController" id="dPb-2w-4oB"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BCi-yy-Khp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-180" y="404"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="YX3-Gx-jTd">
             <objects>
@@ -214,4 +227,7 @@ to use local note storage only.</string>
     <resources>
         <image name="Image" width="225" height="225"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="AlS-nq-uJg"/>
+    </inferredMetricsTieBreakers>
 </document>
