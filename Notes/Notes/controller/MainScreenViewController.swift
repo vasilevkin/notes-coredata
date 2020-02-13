@@ -127,13 +127,9 @@ extension MainScreenViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            
+            CoreDataManager.shared.deleteNote(notes[indexPath.row])
             notes.remove(at: indexPath.row)
             tableView.reloadData()
-            print("swipe to delete")
-            
-            // handle delete (by removing the data from your array and updating the tableview)
-
         }
     }
 }

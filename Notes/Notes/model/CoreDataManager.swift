@@ -28,11 +28,35 @@ class CoreDataManager {
     
     func enqueue(block: @escaping (_ context: NSManagedObjectContext) -> Void) {
         persistentContainerQueue.addOperation {
+            
             let context: NSManagedObjectContext = self.container.newBackgroundContext()
             context.performAndWait {
-                block(context)
-                try? context.save()
+                do {
+                    block(context)
+                    try context.save()
+                } catch let error as NSError {
+                    print("Could not save. \(error), \(error.userInfo)")
+                }
             }
         }
+    }
+    
+    func addNewNote(_ note: Note) {
+        
+    }
+    
+    func deleteNote(_ note: Note) {
+        let managedContext = appDelegate?.persistentContainer.viewContext
+        
+        do {
+            managedContext?.delete(note)
+            try managedContext?.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func updateNote(_ note: Note) {
+        
     }
 }
