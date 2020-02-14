@@ -9,10 +9,17 @@
 import UIKit
 import CoreData
 
+protocol AddNewNoteDelegate {
+    func didAddNote(with title: String, and text: String)
+}
+
 class NoteDetailsViewController: UIViewController {
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textTextView: UITextView!
     
+    var delegate: AddNewNoteDelegate?
+
     var note: Note? {
         didSet {
             updateUI()
@@ -96,6 +103,18 @@ class NoteDetailsViewController: UIViewController {
         CoreDataManager.shared.enqueue { [weak self] context in
             self?.setNoteDataValues(for: entity, context: context, title: title, text: text)
         }
+        
+        
+        guard let delegate = delegate else {
+            return
+        }
+
+        // Notify Delegate
+        delegate.didAddNote(with: title, and: text)
+
+        // Dismiss NoteDetailsViewController
+        dismiss(animated: true, completion: nil)
+
     }
     
     private func setNoteDataValues(for entity: NSEntityDescription?, context: NSManagedObjectContext?, title: String?, text: String?) {

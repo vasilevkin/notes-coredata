@@ -111,3 +111,29 @@ extension MainScreenViewController: UITableViewDataSource {
         }
     }
 }
+
+
+extension MainScreenViewController: AddNewNoteDelegate {
+    func didAddNote(with title: String, and text: String) {
+        
+        
+        // Create Note
+        let note = Note()
+
+        // Populate Note
+        note.title = title
+        note.text = text
+        note.timestamp = ""  //TODO
+        
+        do {
+            try note.managedObjectContext?.save()
+        } catch {
+            let saveError = error as NSError
+            print("Unable to Save Note")
+            print("\(saveError), \(saveError.localizedDescription)")
+        }
+
+    }
+    
+    
+}

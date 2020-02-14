@@ -16,6 +16,8 @@ class CoreDataManager {
     private var context: NSManagedObjectContext?
     private var container: NSPersistentCloudKitContainer
     
+    private var fetchedResultsController: NSFetchedResultsController<Note>?
+
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     let persistentContainerQueue = OperationQueue()
     
@@ -61,6 +63,10 @@ class CoreDataManager {
     }
 
     func fetchAllNotesFromCoreData() -> [Note] {
+        
+        
+        
+        
         var notes: [Note] = []
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
