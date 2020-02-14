@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--About View Controller-->
         <scene sceneID="4VT-us-ybr">
             <objects>
-                <viewController id="Bhk-bm-YAd" sceneMemberID="viewController">
+                <viewController id="Bhk-bm-YAd" customClass="AboutViewController" customModule="Great_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L1z-vZ-9gw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,6 +36,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nh7-4c-8iE">
+                                <rect key="frame" x="26" y="44" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="tapBackButton:" destination="Bhk-bm-YAd" eventType="touchUpInside" id="EfB-Pp-PG8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -48,10 +56,13 @@
                         <viewLayoutGuide key="safeArea" id="W09-dw-oKQ"/>
                     </view>
                     <navigationItem key="navigationItem" id="bKH-yc-oaB"/>
+                    <connections>
+                        <outlet property="backButton" destination="nh7-4c-8iE" id="WcF-MK-HiX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2M5-ej-slK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1974" y="-627"/>
+            <point key="canvasLocation" x="1973.913043478261" y="-627.45535714285711"/>
         </scene>
         <!--Notes List-->
         <scene sceneID="R9e-ac-XJs">
@@ -78,7 +89,7 @@
                     <navigationItem key="navigationItem" title="Notes List" id="WZG-1z-90C">
                         <barButtonItem key="leftBarButtonItem" title="About" id="tr8-3C-BfQ">
                             <connections>
-                                <segue destination="Bhk-bm-YAd" kind="show" id="hrG-yj-zlR"/>
+                                <segue destination="Bhk-bm-YAd" kind="presentation" modalPresentationStyle="fullScreen" id="hrG-yj-zlR"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3ac-h9-RdB">
@@ -243,6 +254,6 @@ to use local note storage only.</string>
         <image name="Image" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AlS-nq-uJg"/>
+        <segue reference="dPb-2w-4oB"/>
     </inferredMetricsTieBreakers>
 </document>
