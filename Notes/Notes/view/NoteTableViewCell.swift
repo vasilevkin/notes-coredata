@@ -17,7 +17,7 @@ class NoteTableViewCell: UITableViewCell {
     func setNoteData(for note: Note) {
         self.backgroundColor = .clear
 
-        titleLabel?.text = note.value(forKeyPath: Constants.Note.title) as? String
-        subtitleLabel?.text = note.value(forKeyPath: Constants.Note.timestamp) as? String
+        titleLabel?.text = note.title
+        subtitleLabel?.text = note.text
     }
 }

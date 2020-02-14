@@ -51,8 +51,8 @@ class NoteDetailsViewController: UIViewController {
     
     private func setupView(for note: Note) {
         title = Constants.noteDetailsViewControllerTitle
-        titleTextField.text = note.value(forKeyPath: Constants.Note.title) as? String
-        textTextView.text = note.value(forKeyPath: Constants.Note.text) as? String
+        titleTextField.text = note.title
+        textTextView.text = note.text
     }
     
     private func setDelegates() {
@@ -61,16 +61,16 @@ class NoteDetailsViewController: UIViewController {
     }
     
     private func setEditingNoteData(for note: Note) {
-        EditingNoteData.newTitle = note.value(forKeyPath: Constants.Note.title) as? String ?? ""
-        EditingNoteData.newText = note.value(forKeyPath: Constants.Note.text) as? String ?? ""
+        EditingNoteData.newTitle = note.title ?? ""
+        EditingNoteData.newText = note.text ?? ""
     }
     
     // MARK: Private
     
     private func updateUI() {
         loadViewIfNeeded()
-        titleTextField.text = note?.value(forKeyPath: Constants.Note.title) as? String
-        textTextView.text = note?.value(forKeyPath: Constants.Note.text) as? String
+        titleTextField.text = note?.title
+        textTextView.text = note?.text
     }
     
     private func saveNoteIfNeeded() {
