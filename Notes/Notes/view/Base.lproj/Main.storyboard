@@ -17,16 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4nH-3T-TTK">
-                                <rect key="frame" x="94.5" y="316.5" width="225" height="263"/>
+                                <rect key="frame" x="-18" y="204" width="450" height="488"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Great Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0Q-Jb-a2w">
-                                        <rect key="frame" x="0.0" y="0.0" width="225" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="450" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="jPQ-4A-hDW">
-                                        <rect key="frame" x="0.0" y="38" width="225" height="225"/>
+                                        <rect key="frame" x="0.0" y="38" width="450" height="450"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -67,7 +67,7 @@
         <!--Notes List-->
         <scene sceneID="R9e-ac-XJs">
             <objects>
-                <viewController id="986-Zz-jbX" customClass="MainScreenViewController" customModule="Great_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="986-Zz-jbX" customClass="NotesListViewController" customModule="Great_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q3g-pS-HtM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,7 +218,6 @@ to use local note storage only.</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kkp-R5-0XG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lLU-N1-xsk">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -237,7 +236,6 @@ to use local note storage only.</string>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lSw-Bq-KYb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c6W-Xs-XLv">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

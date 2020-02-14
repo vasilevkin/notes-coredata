@@ -1,5 +1,5 @@
 //
-//  MainScreenViewController.swift
+//  NotesListViewController.swift
 //  Notes
 //
 //  Created by Sergey Vasilevkin on 11/02/2020.
@@ -13,7 +13,7 @@ protocol NoteSelectionDelegate: class {
     func noteSelected(_ newNote: Note)
 }
 
-class MainScreenViewController: UIViewController {
+class NotesListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var notes : [Note] = []
@@ -70,7 +70,7 @@ class MainScreenViewController: UIViewController {
 
 // MARK: - UITableViewDelegate
 
-extension MainScreenViewController: UITableViewDelegate {
+extension NotesListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedNote = notes[indexPath.row]
@@ -85,7 +85,7 @@ extension MainScreenViewController: UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 
-extension MainScreenViewController: UITableViewDataSource {
+extension NotesListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notes.count
@@ -113,7 +113,7 @@ extension MainScreenViewController: UITableViewDataSource {
 }
 
 
-extension MainScreenViewController: AddNewNoteDelegate {
+extension NotesListViewController: AddNewNoteDelegate {
     func didAddNote(with title: String, and text: String) {
         
         
