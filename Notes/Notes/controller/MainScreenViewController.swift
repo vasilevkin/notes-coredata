@@ -9,11 +9,16 @@
 import UIKit
 import CoreData
 
+protocol NoteSelectionDelegate: class {
+    func noteSelected(_ newNote: Note)
+}
+
 class MainScreenViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    private var notes : [Note] = []
-
+    var notes : [Note] = []
+    weak var delegate: NoteSelectionDelegate?
+    
     // MARK: ViewController lifecycle
     
     override func viewDidLoad() {
@@ -27,7 +32,7 @@ class MainScreenViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetchNotesFromCoreData()
+        notes = CoreDataManager.shared.fetchAllNotesFromCoreData()
     }
     
     // MARK: Initial setup
@@ -46,27 +51,6 @@ class MainScreenViewController: UIViewController {
     }
     
     // MARK: Private
-    
-    private func fetchNotesFromCoreData() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.Note.name)
-        
-        fetchRequest.returnsObjectsAsFaults = false
-        
-        CoreDataManager.shared.enqueue { _ in
-            do {
-                self.notes = try (managedContext.fetch(fetchRequest) as? [Note] ?? [])
-                DispatchQueue.main.async { [weak self] in
-                    self?.tableView.reloadData()
-                }
-            } catch let error as NSError {
-                print("Could not fetch. \(error), \(error.userInfo)")
-            }
-        }
-    }
     
     // MARK: - Dark Mode Support
     
@@ -87,21 +71,15 @@ class MainScreenViewController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension MainScreenViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let selectedNote = notes[indexPath.row]
+        delegate?.noteSelected(selectedNote)
         
-        guard let detailsViewController: NoteDetailsViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as? NoteDetailsViewController else {
-                return
+        if let detailViewController = delegate as? NoteDetailsViewController,
+            let detailNavigationController = detailViewController.navigationController {
+            splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
         }
-        
-        let note = notes[indexPath.row]
-        let objectId = note.objectID.uriRepresentation().absoluteString
-        
-        print("objectId = \(objectId)")
-        
-        detailsViewController.note = note
-
-        navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }
 
@@ -115,7 +93,7 @@ extension MainScreenViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.noteCellReuseIdentifier, for: indexPath) as! NoteTableViewCell
-                
+        
         cell.setNoteData(for: notes[indexPath.row])
         
         return cell

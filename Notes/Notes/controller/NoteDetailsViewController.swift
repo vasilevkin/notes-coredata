@@ -13,7 +13,11 @@ class NoteDetailsViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textTextView: UITextView!
     
-    var note: Note?
+    var note: Note? {
+        didSet {
+            updateUI()
+        }
+    }
     
     private struct EditingNoteData {
         static var newTitle = String()
@@ -62,6 +66,12 @@ class NoteDetailsViewController: UIViewController {
     }
     
     // MARK: Private
+    
+    private func updateUI() {
+        loadViewIfNeeded()
+        titleTextField.text = note?.value(forKeyPath: Constants.Note.title) as? String
+        textTextView.text = note?.value(forKeyPath: Constants.Note.text) as? String
+    }
     
     private func saveNoteIfNeeded() {
         if EditingNoteData.newTitle != titleTextField.text || EditingNoteData.newText != textTextView.text {
@@ -133,5 +143,14 @@ extension NoteDetailsViewController: UITextFieldDelegate {
         }
         EditingNoteData.newTitle = title
         return true
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension NoteDetailsViewController: NoteSelectionDelegate {
+    
+    func noteSelected(_ newNote: Note) {
+        note = newNote
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3nr-Zv-Vq3">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4nH-3T-TTK">
-                                <rect key="frame" x="94.666666666666686" y="316.66666666666669" width="225" height="263.00000000000006"/>
+                                <rect key="frame" x="94.5" y="316.5" width="225" height="263"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Great Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0Q-Jb-a2w">
                                         <rect key="frame" x="0.0" y="0.0" width="225" height="30"/>
@@ -31,7 +31,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© Sergei Vasilevkin, 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8F-Xd-EEx">
-                                <rect key="frame" x="108.66666666666667" y="841.66666666666663" width="196.66666666666663" height="20.333333333333371"/>
+                                <rect key="frame" x="108.5" y="841.5" width="197" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
             </objects>
             <point key="canvasLocation" x="1974" y="-627"/>
         </scene>
-        <!--Notes-->
+        <!--Notes List-->
         <scene sceneID="R9e-ac-XJs">
             <objects>
                 <viewController id="986-Zz-jbX" customClass="MainScreenViewController" customModule="Great_Notes" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,18 +68,14 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="aql-Qb-BQ8" firstAttribute="leading" secondItem="17O-wt-wT1" secondAttribute="leading" id="9XH-y5-xg4">
-                                <variation key="widthClass=regular" constant="200"/>
-                            </constraint>
+                            <constraint firstItem="aql-Qb-BQ8" firstAttribute="leading" secondItem="17O-wt-wT1" secondAttribute="leading" id="9XH-y5-xg4"/>
                             <constraint firstItem="aql-Qb-BQ8" firstAttribute="top" secondItem="17O-wt-wT1" secondAttribute="top" id="GWg-rt-eQC"/>
-                            <constraint firstItem="17O-wt-wT1" firstAttribute="trailing" secondItem="aql-Qb-BQ8" secondAttribute="trailing" id="WcF-N5-tsY">
-                                <variation key="widthClass=regular" constant="200"/>
-                            </constraint>
+                            <constraint firstItem="17O-wt-wT1" firstAttribute="trailing" secondItem="aql-Qb-BQ8" secondAttribute="trailing" id="WcF-N5-tsY"/>
                             <constraint firstAttribute="bottom" secondItem="aql-Qb-BQ8" secondAttribute="bottom" id="xw1-tk-m0A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="17O-wt-wT1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Notes" id="WZG-1z-90C">
+                    <navigationItem key="navigationItem" title="Notes List" id="WZG-1z-90C">
                         <barButtonItem key="leftBarButtonItem" title="About" id="tr8-3C-BfQ">
                             <connections>
                                 <segue destination="Bhk-bm-YAd" kind="show" id="hrG-yj-zlR"/>
@@ -87,7 +83,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3ac-h9-RdB">
                             <connections>
-                                <segue destination="rP7-te-Npe" kind="show" id="AlS-nq-uJg"/>
+                                <segue destination="CrN-X2-Ayg" kind="show" id="AlS-nq-uJg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -190,7 +186,7 @@ to use local note storage only.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGZ-Ba-ZVu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1974" y="857"/>
+            <point key="canvasLocation" x="1974" y="856"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="jiJ-N4-cqc">
@@ -198,7 +194,7 @@ to use local note storage only.</string>
                 <splitViewController id="3nr-Zv-Vq3" sceneMemberID="viewController">
                     <connections>
                         <segue destination="kkp-R5-0XG" kind="relationship" relationship="masterViewController" id="1nf-2n-qWu"/>
-                        <segue destination="rP7-te-Npe" kind="relationship" relationship="detailViewController" id="dPb-2w-4oB"/>
+                        <segue destination="CrN-X2-Ayg" kind="relationship" relationship="detailViewController" id="dPb-2w-4oB"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BCi-yy-Khp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -222,6 +218,25 @@ to use local note storage only.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtM-4l-GX4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="948" y="97"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nH3-s3-3tI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CrN-X2-Ayg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="lSw-Bq-KYb"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c6W-Xs-XLv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rP7-te-Npe" kind="relationship" relationship="rootViewController" id="72T-BG-DDe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J29-sy-1Jx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="948" y="856"/>
         </scene>
     </scenes>
     <resources>
