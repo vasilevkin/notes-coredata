@@ -19,17 +19,16 @@ class NoteDetailsViewController: UIViewController {
     @IBOutlet weak var textTextView: UITextView!
     
     var delegate: AddNewNoteDelegate?
-
-    var note: Note? {
+    var noteManager: ManageNoteProtocol? = CoreDataManager.shared
+    var position: Int?
+    
+    var note: NoteLocal? {
         didSet {
             updateUI()
         }
     }
     
-    private struct EditingNoteData {
-        static var newTitle = String()
-        static var newText = String()
-    }
+    private var editingNoteData = EditingNoteData(newTitle: "", newText: "")
     
     // MARK: ViewController lifecycle
     
@@ -51,12 +50,13 @@ class NoteDetailsViewController: UIViewController {
         guard !(titleTextField.text?.isEmpty ?? false) else {
             return
         }
+        
         saveNoteIfNeeded()
     }
     
     // MARK: Initial setup
     
-    private func setupView(for note: Note) {
+    private func setupView(for note: NoteLocal) {
         title = Constants.noteDetailsViewControllerTitle
         titleTextField.text = note.title
         textTextView.text = note.text
@@ -67,9 +67,9 @@ class NoteDetailsViewController: UIViewController {
         textTextView.delegate = self
     }
     
-    private func setEditingNoteData(for note: Note) {
-        EditingNoteData.newTitle = note.title ?? ""
-        EditingNoteData.newText = note.text ?? ""
+    private func setEditingNoteData(for note: NoteLocal) {
+        editingNoteData.newTitle = note.title
+        editingNoteData.newText = note.text
     }
     
     // MARK: Private
@@ -81,63 +81,35 @@ class NoteDetailsViewController: UIViewController {
     }
     
     private func saveNoteIfNeeded() {
-        if EditingNoteData.newTitle != titleTextField.text || EditingNoteData.newText != textTextView.text {
+        if editingNoteData.newTitle != titleTextField.text || editingNoteData.newText != textTextView.text {
             saveNote()
         }
     }
     
     private func saveNote() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-            let title = titleTextField.text,
+        guard let title = titleTextField.text,
             let text = textTextView.text,
             titleTextField.text != "" else {
                 return
         }
         
-        let context = appDelegate.persistentContainer.viewContext
-        if let note = note {
-            context.delete(note)
+        if let position = position {
+            noteManager?.editNote(with: title, and: text, at: position)
+        } else {
+            noteManager?.addNewNote(with: title, and: text)
         }
-        let entity = NSEntityDescription.entity(forEntityName: Constants.Note.name, in: context)
-        
-        CoreDataManager.shared.enqueue { [weak self] context in
-            self?.setNoteDataValues(for: entity, context: context, title: title, text: text)
-        }
-        
         
         guard let delegate = delegate else {
             return
         }
-
+        
         // Notify Delegate
         delegate.didAddNote(with: title, and: text)
-
+        
         // Dismiss NoteDetailsViewController
         dismiss(animated: true, completion: nil)
-
     }
     
-    private func setNoteDataValues(for entity: NSEntityDescription?, context: NSManagedObjectContext?, title: String?, text: String?) {
-        guard let entity = entity,
-            let context = context,
-            let title = title else {
-                return
-        }
-        
-        let date = Date.timeIntervalSinceReferenceDate
-        let note = NSManagedObject(entity: entity, insertInto: context)
-        
-        note.setValue(title, forKeyPath: Constants.Note.title)
-        note.setValue(text, forKeyPath: Constants.Note.text)
-        
-        let updateDate = Date(timeIntervalSinceReferenceDate: date)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = DateFormatter.Style.long
-        dateFormatter.timeZone = .current
-        let timestamp = dateFormatter.string(from: updateDate)
-        
-        note.setValue(timestamp, forKey: Constants.Note.timestamp)
-    }
 }
 
 // MARK: - UITextViewDelegate
@@ -148,7 +120,7 @@ extension NoteDetailsViewController: UITextViewDelegate {
         guard let text = textTextView.text else {
             return
         }
-        EditingNoteData.newText = text
+        editingNoteData.newText = text
     }
 }
 
@@ -160,7 +132,7 @@ extension NoteDetailsViewController: UITextFieldDelegate {
         guard let title = titleTextField.text else {
             return false
         }
-        EditingNoteData.newTitle = title
+        editingNoteData.newTitle = title
         return true
     }
 }
@@ -169,7 +141,9 @@ extension NoteDetailsViewController: UITextFieldDelegate {
 
 extension NoteDetailsViewController: NoteSelectionDelegate {
     
-    func noteSelected(_ newNote: Note) {
+    func noteSelected(_ newNote: NoteLocal, at position: Int) {
         note = newNote
+        self.position = position
     }
+    
 }

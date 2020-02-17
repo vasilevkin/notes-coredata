@@ -15,6 +15,7 @@
 		8689E11123F2B3FF00AB2F8C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689E11023F2B3FF00AB2F8C /* Constants.swift */; };
 		8694ABCE23FA938B00B72E37 /* ManageNoteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8694ABCD23FA938B00B72E37 /* ManageNoteProtocol.swift */; };
 		8694ABD023FAB75000B72E37 /* NoteLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8694ABCF23FAB75000B72E37 /* NoteLocal.swift */; };
+		8694ABD223FACE9B00B72E37 /* EditingNoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8694ABD123FACE9B00B72E37 /* EditingNoteData.swift */; };
 		86B5E75323F27F1F0056B23C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5E75223F27F1F0056B23C /* AppDelegate.swift */; };
 		86B5E75523F27F1F0056B23C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5E75423F27F1F0056B23C /* SceneDelegate.swift */; };
 		86B5E75A23F27F1F0056B23C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B5E75823F27F1F0056B23C /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		8689E11023F2B3FF00AB2F8C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8694ABCD23FA938B00B72E37 /* ManageNoteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageNoteProtocol.swift; sourceTree = "<group>"; };
 		8694ABCF23FAB75000B72E37 /* NoteLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteLocal.swift; sourceTree = "<group>"; };
+		8694ABD123FACE9B00B72E37 /* EditingNoteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingNoteData.swift; sourceTree = "<group>"; };
 		86B5E74F23F27F1F0056B23C /* Great Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Great Notes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B5E75223F27F1F0056B23C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86B5E75423F27F1F0056B23C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				8628C6D023F3194B002FADAE /* CoreDataManager.swift */,
 				8694ABCD23FA938B00B72E37 /* ManageNoteProtocol.swift */,
 				8694ABCF23FAB75000B72E37 /* NoteLocal.swift */,
+				8694ABD123FACE9B00B72E37 /* EditingNoteData.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86B5E75323F27F1F0056B23C /* AppDelegate.swift in Sources */,
+				8694ABD223FACE9B00B72E37 /* EditingNoteData.swift in Sources */,
 				86B5E75523F27F1F0056B23C /* SceneDelegate.swift in Sources */,
 				86B5E76F23F2953E0056B23C /* NoteDetailsViewController.swift in Sources */,
 				86B5E77523F2A0210056B23C /* NotesListViewController.swift in Sources */,

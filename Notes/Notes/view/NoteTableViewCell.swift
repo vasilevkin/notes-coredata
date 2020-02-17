@@ -14,10 +14,10 @@ class NoteTableViewCell: UITableViewCell {
 
     // MARK: Initial setup
 
-    func setNoteData(for note: Note) {
+    func setNoteData(for note: NoteLocal) {
         self.backgroundColor = .clear
 
         titleLabel?.text = note.title
-        subtitleLabel?.text = note.text
+        subtitleLabel?.text = note.timestamp
     }
 }

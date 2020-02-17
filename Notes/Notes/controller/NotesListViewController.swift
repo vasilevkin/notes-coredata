@@ -10,19 +10,22 @@ import UIKit
 import CoreData
 
 protocol NoteSelectionDelegate: class {
-    func noteSelected(_ newNote: Note)
+    func noteSelected(_ newNote: NoteLocal, at position: Int)
 }
 
 class NotesListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    var notes : [Note] = []
+    var notes : [NoteLocal] = []
+    var noteManager: ManageNoteProtocol? = nil
     weak var delegate: NoteSelectionDelegate?
     
     // MARK: ViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        noteManager = CoreDataManager.shared
         
         setupTableView()
         setupBackground()
@@ -32,7 +35,10 @@ class NotesListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        notes = CoreDataManager.shared.fetchAllNotesFromCoreData()
+        notes = noteManager?.notes ?? []
+        tableView.reloadData()
+        
+        print("NotesListViewController  notes = \(notes)")
     }
     
     // MARK: Initial setup
@@ -74,10 +80,12 @@ extension NotesListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedNote = notes[indexPath.row]
-        delegate?.noteSelected(selectedNote)
+
+        delegate?.noteSelected(selectedNote, at: indexPath.row)
         
         if let detailViewController = delegate as? NoteDetailsViewController,
             let detailNavigationController = detailViewController.navigationController {
+            detailViewController.delegate = CoreDataManager.shared
             splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
         }
     }
@@ -92,10 +100,13 @@ extension NotesListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.noteCellReuseIdentifier, for: indexPath) as! NoteTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.noteCellReuseIdentifier, for: indexPath) as? NoteTableViewCell else {
+            return UITableViewCell()
+        }
+        print("notes[indexPath.row] = \(notes[indexPath.row])")
         
         cell.setNoteData(for: notes[indexPath.row])
-        
+
         return cell
     }
     
@@ -105,35 +116,53 @@ extension NotesListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            CoreDataManager.shared.deleteNote(notes[indexPath.row])
-            notes.remove(at: indexPath.row)
+            noteManager?.deleteNote(at: indexPath.row)
+            notes = noteManager?.notes ?? []
             tableView.reloadData()
         }
     }
 }
 
 
-extension NotesListViewController: AddNewNoteDelegate {
-    func didAddNote(with title: String, and text: String) {
-        
-        
-        // Create Note
-        let note = Note()
-
-        // Populate Note
-        note.title = title
-        note.text = text
-        note.timestamp = ""  //TODO
-        
-        do {
-            try note.managedObjectContext?.save()
-        } catch {
-            let saveError = error as NSError
-            print("Unable to Save Note")
-            print("\(saveError), \(saveError.localizedDescription)")
-        }
-
-    }
-    
-    
-}
+//extension NotesListViewController: AddNewNoteDelegate {
+//    func didAddNote(with title: String, and text: String) {
+//
+//
+//        // Create Note
+////        let note = Note()
+//
+//        let date = Date.timeIntervalSinceReferenceDate
+//        let updateDate = Date(timeIntervalSinceReferenceDate: date)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = DateFormatter.Style.long
+//        dateFormatter.timeZone = .current
+//        let timestamp = dateFormatter.string(from: updateDate)
+//
+//
+//        let note = NoteLocal(title: title, text: text, timestamp: timestamp)
+//
+//
+//
+//        // Populate Note
+////        note.title = title
+////        note.text = text
+////        note.timestamp = timestamp
+//
+//
+//        noteManager?.addNewNote(note)
+//
+//
+//
+////        CoreDataManager.shared.addNewNote(note)
+//
+//
+////        do {
+////            try note.managedObjectContext?.save()
+////        } catch {
+////            let saveError = error as NSError
+////            print("Unable to Save Note")
+////            print("\(saveError), \(saveError.localizedDescription)")
+////        }
+//
+//    }
+//}

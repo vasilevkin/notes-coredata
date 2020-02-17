@@ -12,6 +12,6 @@ protocol ManageNoteProtocol {
     var notes: [NoteLocal] { get set }
     func addNewNote(_ note: NoteLocal)
     func addNewNote(with title: String, and text: String)
-    func editNote(_ note: NoteLocal)
-    func deleteNote(_ note: NoteLocal)    
+    func editNote(with title: String, and text: String, at position: Int)
+    func deleteNote(at position: Int)
 }
