@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8628C6D123F3194B002FADAE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628C6D023F3194B002FADAE /* CoreDataManager.swift */; };
+		865135DD23FBD793000367F6 /* ObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865135DC23FBD793000367F6 /* ObjectConvertible.swift */; };
+		865135E023FBD8CD000367F6 /* ManagedObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865135DF23FBD8CD000367F6 /* ManagedObjectConvertible.swift */; };
+		865DAF0B23FBEBCE00883683 /* NotesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865DAF0A23FBEBCE00883683 /* NotesStore.swift */; };
 		867FCFD323F55C200072ECD3 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867FCFD223F55C200072ECD3 /* CloudKitManager.swift */; };
 		867FCFD623F55E130072ECD3 /* CloudKitNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867FCFD523F55E130072ECD3 /* CloudKitNote.swift */; };
 		867FCFD823F55ECD0072ECD3 /* CKError+NoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867FCFD723F55ECD0072ECD3 /* CKError+NoteError.swift */; };
@@ -26,6 +29,8 @@
 		86B5E77223F29CA90056B23C /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5E77023F29CA90056B23C /* NoteTableViewCell.swift */; };
 		86B5E77323F29CA90056B23C /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86B5E77123F29CA90056B23C /* NoteTableViewCell.xib */; };
 		86B5E77523F2A0210056B23C /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5E77423F2A0210056B23C /* NotesListViewController.swift */; };
+		86BAF05B23FBE31900FEDA8F /* NoteManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BAF05923FBE31900FEDA8F /* NoteManagedObject+CoreDataClass.swift */; };
+		86BAF05C23FBE31900FEDA8F /* NoteManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BAF05A23FBE31900FEDA8F /* NoteManagedObject+CoreDataProperties.swift */; };
 		86F9892323F3FFD2000885C8 /* GreatNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9892223F3FFD2000885C8 /* GreatNotesTests.swift */; };
 		86F9892C23F4011E000885C8 /* CoreDataManager+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9892A23F40090000885C8 /* CoreDataManager+Tests.swift */; };
 		86F9892D23F40E51000885C8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8689E11023F2B3FF00AB2F8C /* Constants.swift */; };
@@ -46,6 +51,9 @@
 
 /* Begin PBXFileReference section */
 		8628C6D023F3194B002FADAE /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		865135DC23FBD793000367F6 /* ObjectConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectConvertible.swift; sourceTree = "<group>"; };
+		865135DF23FBD8CD000367F6 /* ManagedObjectConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectConvertible.swift; sourceTree = "<group>"; };
+		865DAF0A23FBEBCE00883683 /* NotesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesStore.swift; sourceTree = "<group>"; };
 		867FCFD223F55C200072ECD3 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		867FCFD523F55E130072ECD3 /* CloudKitNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitNote.swift; sourceTree = "<group>"; };
 		867FCFD723F55ECD0072ECD3 /* CKError+NoteError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKError+NoteError.swift"; sourceTree = "<group>"; };
@@ -66,6 +74,8 @@
 		86B5E77023F29CA90056B23C /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		86B5E77123F29CA90056B23C /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
 		86B5E77423F2A0210056B23C /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
+		86BAF05923FBE31900FEDA8F /* NoteManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		86BAF05A23FBE31900FEDA8F /* NoteManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		86F9892023F3FFD1000885C8 /* GreatNotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GreatNotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86F9892223F3FFD2000885C8 /* GreatNotesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreatNotesTests.swift; sourceTree = "<group>"; };
 		86F9892423F3FFD2000885C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,6 +106,18 @@
 				86F9892A23F40090000885C8 /* CoreDataManager+Tests.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		865135DE23FBD798000367F6 /* CoreDataRepository */ = {
+			isa = PBXGroup;
+			children = (
+				865135DC23FBD793000367F6 /* ObjectConvertible.swift */,
+				865135DF23FBD8CD000367F6 /* ManagedObjectConvertible.swift */,
+				86BAF05923FBE31900FEDA8F /* NoteManagedObject+CoreDataClass.swift */,
+				86BAF05A23FBE31900FEDA8F /* NoteManagedObject+CoreDataProperties.swift */,
+				865DAF0A23FBEBCE00883683 /* NotesStore.swift */,
+			);
+			path = CoreDataRepository;
 			sourceTree = "<group>";
 		};
 		867FCFD423F55D2E0072ECD3 /* CloudKit */ = {
@@ -133,6 +155,7 @@
 				86B5E76923F28D720056B23C /* model */,
 				86B5E76A23F28D7B0056B23C /* view */,
 				86B5E76B23F28D980056B23C /* controller */,
+				865135DE23FBD798000367F6 /* CoreDataRepository */,
 				8628C6D223F427AC002FADAE /* Extensions */,
 				86FA11CF23F4129A00B0AD34 /* Supporting Files */,
 				867FCFD423F55D2E0072ECD3 /* CloudKit */,
@@ -300,11 +323,16 @@
 				86B5E75523F27F1F0056B23C /* SceneDelegate.swift in Sources */,
 				86B5E76F23F2953E0056B23C /* NoteDetailsViewController.swift in Sources */,
 				86B5E77523F2A0210056B23C /* NotesListViewController.swift in Sources */,
+				865DAF0B23FBEBCE00883683 /* NotesStore.swift in Sources */,
+				86BAF05C23FBE31900FEDA8F /* NoteManagedObject+CoreDataProperties.swift in Sources */,
 				86B5E77223F29CA90056B23C /* NoteTableViewCell.swift in Sources */,
+				865135DD23FBD793000367F6 /* ObjectConvertible.swift in Sources */,
+				86BAF05B23FBE31900FEDA8F /* NoteManagedObject+CoreDataClass.swift in Sources */,
 				8628C6D123F3194B002FADAE /* CoreDataManager.swift in Sources */,
 				8688401223F6704200C9166F /* AboutViewController.swift in Sources */,
 				8694ABD023FAB75000B72E37 /* NoteLocal.swift in Sources */,
 				867FCFD623F55E130072ECD3 /* CloudKitNote.swift in Sources */,
+				865135E023FBD8CD000367F6 /* ManagedObjectConvertible.swift in Sources */,
 				86B5E75D23F27F1F0056B23C /* Notes.xcdatamodeld in Sources */,
 				8689E11123F2B3FF00AB2F8C /* Constants.swift in Sources */,
 				867FCFD823F55ECD0072ECD3 /* CKError+NoteError.swift in Sources */,
