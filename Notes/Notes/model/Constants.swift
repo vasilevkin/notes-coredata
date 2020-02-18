@@ -16,7 +16,7 @@ struct Constants {
     
     // CoreData entity Note
     struct Note {
-        static let name = "Note"
+        static let name = "NoteManagedObject"
         static let noteId = "noteId"
         static let title = "title"
         static let text = "text"
