@@ -23,10 +23,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let detailViewController = (splitViewController.viewControllers.last as? UINavigationController)?.topViewController as? NoteDetailsViewController else {
                 fatalError()
         }
-        let notes = CoreDataManager.shared.fetchAllNotesFromCoreData()
+  
+        let notes = CoreDataManager.shared.notes
+
+//        let notes = CoreDataManager.shared.fetchAllNotesFromCoreData()
         
         detailViewController.note = notes.first
         masterViewController.delegate = detailViewController
+
+        detailViewController.delegate = CoreDataManager.shared
+
+//        detailViewController.delegate = masterViewController
+        
         detailViewController.navigationItem.leftItemsSupplementBackButton = true
         detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
     }

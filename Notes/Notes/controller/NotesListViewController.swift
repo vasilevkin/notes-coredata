@@ -17,15 +17,29 @@ class NotesListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var notes : [NoteLocal] = []
-    var noteManager: ManageNoteProtocol? = nil
+//    var noteManager: ManageNoteProtocol? = nil
     weak var delegate: NoteSelectionDelegate?
+    
+    
+    var store: ManageNoteProtocol? = nil
+
+    
     
     // MARK: ViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        noteManager = CoreDataManager.shared
+//        noteManager = CoreDataManager.shared
+        
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                    return
+                }
+        
+        store = appDelegate.store
+
+        
         
         setupTableView()
         setupBackground()
@@ -35,7 +49,9 @@ class NotesListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        notes = noteManager?.notes ?? []
+        notes = store?.fetchAll() ?? []
+            
+//        notes = noteManager?.notes ?? []
         tableView.reloadData()
         
         print("NotesListViewController  notes = \(notes)")
@@ -116,8 +132,8 @@ extension NotesListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            noteManager?.deleteNote(at: indexPath.row)
-            notes = noteManager?.notes ?? []
+//            noteManager?.deleteNote(at: indexPath.row)
+//            notes = noteManager?.notes ?? []
             tableView.reloadData()
         }
     }

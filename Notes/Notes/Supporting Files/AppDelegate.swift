@@ -12,10 +12,21 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+//    var noteManager: ManageNoteProtocol? = nil
 
-
+    var store: ManageNoteProtocol? = nil
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Initialize CoreDataManager
+        let noteManager = CoreDataManager.shared
+        
+        // Initialize store
+        let context: NSManagedObjectContext = noteManager.managedObjectContext
+        store = NotesStore(context: context)
+
+        
         return true
     }
 

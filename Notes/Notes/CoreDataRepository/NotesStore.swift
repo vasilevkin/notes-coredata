@@ -9,23 +9,26 @@
 import Foundation
 import CoreData
 
-class NotesStore {
+class NotesStore : ManageNoteProtocol {
     private let context: NSManagedObjectContext
     
     init(context: NSManagedObjectContext) {
         self.context = context
     }
     
-    func insert(_ event: NoteLocal) {
-        NoteManagedObject.insert(event, with: context)
+    func insert(_ note: NoteLocal) {
+        NoteManagedObject.insert(note, with: context)
+        
+        print("NotesStore  notes = \(fetchAll())")
+
     }
     
-    func update(_ event: NoteLocal) {
-        NoteManagedObject.update(event, with: context)
+    func update(_ note: NoteLocal) {
+        NoteManagedObject.update(note, with: context)
     }
     
-    func delete(_ event: NoteLocal) {
-        NoteManagedObject.delete(event, with: context)
+    func delete(_ note: NoteLocal) {
+        NoteManagedObject.delete(note, with: context)
     }
     
     func fetchAll() -> [NoteLocal] {

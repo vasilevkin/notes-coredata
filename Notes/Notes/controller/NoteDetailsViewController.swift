@@ -19,7 +19,9 @@ class NoteDetailsViewController: UIViewController {
     @IBOutlet weak var textTextView: UITextView!
     
     var delegate: AddNewNoteDelegate?
-    var noteManager: ManageNoteProtocol? = CoreDataManager.shared
+    
+    var store: ManageNoteProtocol? = nil
+//    var noteManager: ManageNoteProtocol? = CoreDataManager.shared
     var position: Int?
     
     var note: NoteLocal? {
@@ -40,6 +42,14 @@ class NoteDetailsViewController: UIViewController {
         guard let note = note else {
             return
         }
+        
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                    return
+                }
+        
+        store = appDelegate.store
+        
         
         setupView(for: note)
         setEditingNoteData(for: note)
@@ -69,7 +79,7 @@ class NoteDetailsViewController: UIViewController {
     
     private func setEditingNoteData(for note: NoteLocal) {
         editingNoteData.newTitle = note.title
-        editingNoteData.newText = note.text
+        editingNoteData.newText = note.text ?? ""
     }
     
     // MARK: Private
@@ -94,15 +104,28 @@ class NoteDetailsViewController: UIViewController {
         }
         
         if let position = position {
-            noteManager?.editNote(with: title, and: text, at: position)
+//            noteManager?.editNote(with: title, and: text, at: position)
         } else {
-            noteManager?.addNewNote(with: title, and: text)
+//            noteManager?.addNewNote(with: title, and: text)
         }
         
         guard let delegate = delegate else {
             return
         }
         
+        let noteLocal = NoteLocal(title: title, text: text, timestamp: "")
+
+        let man = CoreDataManager.shared
+        
+        let locStore  = NotesStore(context: man.managedObjectContext)
+
+        locStore.insert(noteLocal)
+
+//        store?.insert(noteLocal)
+    
+        print("store?.insert(noteLocal) = \(noteLocal)")
+        print("NoteDetailsViewController  notes = \(locStore.fetchAll())")
+
         // Notify Delegate
         delegate.didAddNote(with: title, and: text)
         
